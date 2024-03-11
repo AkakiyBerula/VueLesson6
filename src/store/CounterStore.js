@@ -5,16 +5,19 @@ export const useCounterStore = defineStore('counter', {
         message: "Counter",
         counter: 0
     }),
-    actions: {
+    mutations: {
         increment() {
             this.counter++;
         },
         decrement() {
             this.counter--;
         },
-        updateName(newName) {
-            this.name = newName;
+        incrementTwo() {
+            this.counter += 2;
         },
-  },
+        decrementTwo() {
+            this.counter -= 2;
+        }
+    },
 });
 
