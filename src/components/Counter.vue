@@ -23,7 +23,8 @@
 
 <script>
 import { mapActions, mapState } from 'pinia';
-import { useCounterStore, useTextStore } from '../store/CounterStore';
+import { useCounterStore } from '../store/CounterStore';
+import { useTextStore } from "../store/TextStore";
 
 export default {
   name: 'Counter',
