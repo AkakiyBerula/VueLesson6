@@ -25,15 +25,18 @@
 import { mapActions, mapState } from 'pinia';
 import { useCounterStore } from '../store/CounterStore';
 import { useTextStore } from "../store/TextStore";
+import {useProductStore} from "../store/ProductStore";
 
 export default {
   name: 'Counter',
   computed: {
     ...mapState(useCounterStore, ['counter', 'getPow', 'isEven']),
     ...mapState(useTextStore, ['text']),
+    ...mapState(useProductStore, ["product"])
   },
   methods: {
     ...mapActions(useCounterStore, ['increment', 'decrement', 'incrementTwo', 'decrementTwo']),
+    ...mapActions(useProductStore, ['getProducts']),
     saveMessage() {
       const counterStore = useCounterStore();
       counterStore.getMessage(this.message);
@@ -43,6 +46,9 @@ export default {
     return {
       message: 'Повідомлення'
     };
+  },
+  async mounted() {
+    await this.getProducts();
   }
 };
 </script>
