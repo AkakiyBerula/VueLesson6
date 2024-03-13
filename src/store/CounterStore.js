@@ -16,6 +16,14 @@ export const useCounterStore = defineStore('counter', {
         message: "Counter",
         counter: 0
     }),
+    getters: {
+        getPow(state) {
+            return state.counter ** 2;
+        },
+        isEven(state) {
+            return state.counter % 2 === 0;
+        }
+    },
     actions: {
         increment() {
             this.counter++;
