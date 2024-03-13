@@ -1,5 +1,16 @@
 import { defineStore } from 'pinia';
 
+export const useTextStore = defineStore('text', {
+    state: () => ({
+        text: 'Hello, world!',
+    }),
+    actions: {
+        setMessage(newMessage) {
+            this.text = newMessage;
+        },
+    },
+});
+
 export const useCounterStore = defineStore('counter', {
     state: () => ({
         message: "Counter",
@@ -19,7 +30,10 @@ export const useCounterStore = defineStore('counter', {
         decrementTwo() {
             this.decrement();
             this.decrement();
+        },
+        getMessage(message) {
+            const messageStore = useTextStore();
+            messageStore.setMessage(message);
         }
     },
-    
 });
