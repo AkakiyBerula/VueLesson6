@@ -1,23 +1,42 @@
 <template>
   <div>
-    <HelloWorld msg="Hello" />
-    <Counter />
-    <ProductList />
+    <v-tabs
+      v-model="tab"
+      align-tabs="end"
+      color="deep-purple-accent-4"
+    >
+      <div @click="redirectTo('main')">
+        <v-tab :value="1">Main Page</v-tab>
+      </div>
+      <div @click="redirectTo('admin-list')">
+        <v-tab :value="2">Admin Page</v-tab>
+      </div>
+      <div @click="redirectTo('user-page')">
+        <v-tab :value="3">User Page</v-tab>
+      </div>
+      <div @click="redirectTo('login')">
+        <v-tab :value="4">Login</v-tab>
+      </div>
+      
+    </v-tabs>
+    
+    <router-view/>
   </div>
 </template>
 
 <script>
 
-import HelloWorld from "./components/HelloWorld.vue";
-import Counter from "./components/Counter.vue";
-import ProductList from "./components/ProductList.vue"
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-    Counter,
-    ProductList
+  methods: {
+    redirectTo(nameRoute) {
+      const routeExists = this.$router.hasRoute(nameRoute);
+        if (routeExists) {
+          this.$router.push({ name: nameRoute });
+        } else {
+          this.$router.push({ name: 'not-found' });
+      }
+    }
   }
 }
 </script>
