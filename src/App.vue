@@ -2,19 +2,22 @@
   <div>
     <HelloWorld msg="Hello" />
     <Counter />
+    <ProductList />
   </div>
 </template>
 
 <script>
 
-import HelloWorld from "./components/HelloWorld.vue"
-import Counter from "./components/Counter.vue"
+import HelloWorld from "./components/HelloWorld.vue";
+import Counter from "./components/Counter.vue";
+import ProductList from "./components/ProductList.vue"
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    Counter
+    Counter,
+    ProductList
   }
 }
 </script>
