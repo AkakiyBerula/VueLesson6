@@ -41,9 +41,6 @@ import { usePaginationStore } from '@/store/PaginationStore';
 export default {
   created() {
     this.store = usePaginationStore();
-    this.currentPage = this.store.currentPage;
-    this.totalPages = this.store.totalPages;
-    this.paginatedList = this.store.paginatedList;
   },
   methods: {
     prevPage() {
@@ -63,6 +60,9 @@ export default {
   },
   async mounted() {
     await this.store.populateList();
+    this.currentPage = this.store.currentPage;
+    this.totalPages = this.store.totalPages;
+    this.paginatedList = this.store.paginatedList;
     this.totalPages = this.store.totalPages;
   },
   data() {
